@@ -1,2 +1,2 @@
 # .Net
-ASP.NET MVC &amp; Web Services(API)
+ASP.NET MVC
