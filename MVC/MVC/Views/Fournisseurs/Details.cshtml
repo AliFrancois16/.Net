@@ -1,0 +1,90 @@
+﻿@model DataBase.Fournisseur
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fournisseur</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomFournisseur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomFournisseur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdresseFournisseur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdresseFournisseur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodePostalFournisseur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodePostalFournisseur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VilleFournisseur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VilleFournisseur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaysFournisseur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaysFournisseur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelephoneFournisseur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelephoneFournisseur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebSiteFournisseur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WebSiteFournisseur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailFournisseur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailFournisseur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActifFournisseur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActifFournisseur)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdFournisseur }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

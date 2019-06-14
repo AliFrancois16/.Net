@@ -1,0 +1,72 @@
+﻿@model DataBase.Avi
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Avi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.NomClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.NomClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produit.NomProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produit.NomProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TexteAvis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TexteAvis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoteAvis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoteAvis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateAvis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAvis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPublie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPublie)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

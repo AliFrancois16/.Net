@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DataBase.Fournisseur>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdFournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomFournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdresseFournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodePostalFournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VilleFournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaysFournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelephoneFournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WebSiteFournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailFournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActifFournisseur)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdFournisseur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomFournisseur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdresseFournisseur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodePostalFournisseur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VilleFournisseur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaysFournisseur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelephoneFournisseur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WebSiteFournisseur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailFournisseur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActifFournisseur)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IdFournisseur }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IdFournisseur }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IdFournisseur })
+        </td>
+    </tr>
+}
+
+</table>

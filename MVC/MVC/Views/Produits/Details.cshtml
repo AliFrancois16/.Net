@@ -1,0 +1,122 @@
+﻿@model DataBase.Produit
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Produit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fournisseur.NomFournisseur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fournisseur.NomFournisseur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrixProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrixProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitsInStock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PoidsProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoidsProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrlImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrlImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LargeurProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LargeurProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LongueurProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongueurProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HauteurProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HauteurProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CapaciteProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapaciteProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Couleur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Couleur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionProduit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdProduit }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

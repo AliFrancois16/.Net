@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DataBase.Produit>
+
+@{
+    ViewBag.Title = "Tirelire Vente Page";
+
+}
+
+<h1>Bienvenue au Tirelire Vente Site</h1>
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_Produit", item)
+}
+
+@section scripts{
+    <script>
+        $(".buttonShop").click(function () {
+            $(this).removeClass("btn-primary");
+            $(this).addClass("btn-success");
+            console.log($(this).attr("id"));
+        });
+    </script>
+}

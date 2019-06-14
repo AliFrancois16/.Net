@@ -1,0 +1,21 @@
+﻿@model DataBase.Produit
+
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail text-center">
+        <img src="@Html.DisplayFor(model => model.UrlImage)" alt="..." class="img-thumbnail" style="height: 200px;" />
+        <div class="caption">
+            <h3>@Html.DisplayFor(model => model.NomProduit)</h3>
+            <p>Poids per kg : @Html.DisplayFor(model => model.PoidsProduit)</p>
+            <p>Largeur : @Html.DisplayFor(model => model.LargeurProduit)</p>
+            <p>Longueur : @Html.DisplayFor(model => model.LongueurProduit)</p>
+            <p>Hauteur : @Html.DisplayFor(model => model.HauteurProduit)</p>
+            <p>Capacite : @Html.DisplayFor(model => model.CapaciteProduit)</p>
+            <p>Couleur : @Html.DisplayFor(model => model.Couleur)</p>
+            <div class="clearfix">
+                <div class="price pull-left">Prix : @Html.DisplayFor(model => model.PrixProduit) €</div>
+                @*<button id="@Html.DisplayFor(model => model.IdProduit)" class="btn btn-primary pull-right buttonShop" role="button">Add to Shopping Cart</button>*@
+            </div><br />
+            <a href="~/Home/Details/@Html.DisplayFor(model => model.IdProduit)" class="btn btn-info pull-left btn-block" role="button">Details</a><br />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@model DataBase.Avi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Avi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.NomClient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.NomClient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produit.NomProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produit.NomProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TexteAvis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TexteAvis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoteAvis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoteAvis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateAvis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAvis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPublie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsPublie)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdAvis }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

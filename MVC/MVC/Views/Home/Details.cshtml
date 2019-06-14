@@ -1,0 +1,209 @@
+﻿@model DataBase.Produit
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
+<h2>Details</h2>
+<h4>Produit</h4>
+<hr />
+<div class="row">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <div class="thumbnail">
+            <img id="myImg" src="@Html.DisplayFor(model => model.UrlImage)" alt="@Html.DisplayFor(model => model.NomProduit) Image" class="img-responsive">
+            <div class="caption">
+                <h3>@Html.DisplayFor(model => model.NomProduit)</h3>
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <div id="caption"></div>
+                    <img class="modal-content" id="modalImg">
+                </div>
+            </div>
+            <p>Poids per kg : @Html.DisplayFor(model => model.PoidsProduit)</p>
+            <p>Largeur : @Html.DisplayFor(model => model.LargeurProduit)</p>
+            <p>Longueur : @Html.DisplayFor(model => model.LongueurProduit)</p>
+            <p>Hauteur : @Html.DisplayFor(model => model.HauteurProduit)</p>
+            <p>Capacite : @Html.DisplayFor(model => model.CapaciteProduit)</p>
+            <p>Couleur : @Html.DisplayFor(model => model.Couleur)</p>
+
+            <p class="description" style="display:none">
+                Description : @Html.DisplayFor(model => model.DescriptionProduit)<br />
+                @*Fournisseur : @ViewBag.Fournisseur*@
+                Fournisseur : @ViewBag.Fournisseur
+            </p>
+            <div class="clearfix">
+                <div class="price pull-left">Prix : @Html.DisplayFor(model => model.PrixProduit) €</div>
+                @*<a href="/cart/@Html.DisplayFor(model => model.IdProduit)" class="btn btn-success pull-right" role="button">Go to Shopping Cart</a>*@
+                <span class="btn btn-warning pull-right">
+                    @Html.ActionLink("Go to Shopping Cart", "AjouterAuPanier", "Panier", new { id = @Html.DisplayFor(model => model.IdProduit) }, null)
+                </span>
+
+            </div><br />
+            <button class="btn btn-info pull-left btn-block"> + Details</button>
+        </div>
+    </div>
+</div>
+<br />
+
+@* ************************************ *@
+
+@if (Request.IsAuthenticated)
+{
+    <a href="~/Avis/Create/@Html.DisplayFor(model => model.IdProduit)" class="btn btn-info pull-right" role="button">Ajouter Nouveau Avis</a><br />
+}
+    <h4>Avis</h4>
+    <table class="table">
+
+        @foreach (var item in ViewBag.Avis)
+        {
+            <div class="row bg-info">
+                <div class="col-md-10 col-md-offset-1">
+                    <strong>@item.Client.NomClient</strong>
+                    <span class="pull-right">@item.DateAvis.</span>
+                    <p>@item.TexteAvis</p>
+                    <span class="pull-right">
+                        Note :@{
+                            int x = Convert.ToInt16(item.NoteAvis);
+                        }
+                        @for (int i = 0; i < x; i++)
+                        {
+                            <span class="fa fa-star checked"></span>
+                        }
+                        @for (int i = x; i < 5; i++)
+                        {
+                            <span class="fa fa-star"></span>
+                        }
+                    </span>
+                </div>
+            </div>
+            <br />
+        }
+
+    </table>
+
+    </div>
+
+
+    @* ************************************* *@
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    @section scripts{
+        <script>
+        $("button").click(() => {
+            $(".description").fadeToggle("slow", "linear");
+        });
+
+        //Modal Image
+        $("#myImg").click(function() {
+            $("#myModal").css("display", "block");
+            $("#modalImg").attr("src", this.src);
+            $("#caption").text(this.alt);
+            $("#caption").css("color", "@Html.DisplayFor(model => model.Couleur).ToString().ToLower()");
+        });
+        $(".close").click(function(){
+            $("#myModal").css("display", "none");
+        });
+
+        //// Get the modal
+        //var modal = document.getElementById("myModal");
+
+        //// Get the image and insert it inside the modal - use its "alt" text as a caption
+        //var img = document.getElementById("myImg");
+        //var modalImg = document.getElementById("img01");
+        //var captionText = document.getElementById("caption");
+        //img.onclick = function () {
+        //    modal.style.display = "block";
+        //    modalImg.src = this.src;
+        //    captionText.innerHTML = this.alt;
+        //}
+
+        //// Get the <span> element that closes the modal
+        //var span = document.getElementsByClassName("close")[0];
+
+        //// When the user clicks on <span> (x), close the modal
+        //span.onclick = function () {
+        //    modal.style.display = "none";
+        //}
+        </script>
+    }
+    @section style{
+        <style>
+            /*Modal Image*/
+            #myImg {
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+                #myImg:hover {
+                    opacity: 0.7;
+                }
+
+            /* The Modal (background) */
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                max-height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+            }
+
+            /* Modal Content (image) */
+            .modal-content {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+            }
+
+            /* Caption of Modal Image */
+            #caption {
+                font-size: x-large;
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+                text-align: center;
+                padding: 10px 0;
+                height: 50px;
+                color: CYAN;
+            }
+
+            /* Add Animation */
+            .modal-content, #caption {
+                -webkit-animation-name: zoom;
+                -webkit-animation-duration: 0.6s;
+                animation-name: zoom;
+                animation-duration: 0.6s;
+            }
+
+            /* The Close Button */
+            .close {
+                position: absolute;
+                top: 50px;
+                right: 35px;
+                color: CYAN;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+                .close:hover,
+                .close:focus {
+                    color: #bbb;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+        </style>
+    }

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DataBase.Avi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.NomClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Produit.NomProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TexteAvis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoteAvis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAvis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPublie)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.NomClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Produit.NomProduit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TexteAvis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoteAvis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAvis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPublie)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdAvis }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdAvis }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdAvis })
+        </td>
+    </tr>
+}
+
+</table>

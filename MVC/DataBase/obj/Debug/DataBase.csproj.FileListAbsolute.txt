@@ -1,0 +1,12 @@
+C:\TP\MVC\DataBase\bin\Debug\DataBase.dll.config
+C:\TP\MVC\DataBase\bin\Debug\DataBase.dll
+C:\TP\MVC\DataBase\bin\Debug\DataBase.pdb
+C:\TP\MVC\DataBase\bin\Debug\EntityFramework.dll
+C:\TP\MVC\DataBase\bin\Debug\EntityFramework.SqlServer.dll
+C:\TP\MVC\DataBase\bin\Debug\EntityFramework.xml
+C:\TP\MVC\DataBase\bin\Debug\EntityFramework.SqlServer.xml
+C:\TP\MVC\DataBase\obj\Debug\DataBase.csprojAssemblyReference.cache
+C:\TP\MVC\DataBase\obj\Debug\DataBase.csproj.CoreCompileInputs.cache
+C:\TP\MVC\DataBase\obj\Debug\DataBase.csproj.CopyComplete
+C:\TP\MVC\DataBase\obj\Debug\DataBase.dll
+C:\TP\MVC\DataBase\obj\Debug\DataBase.pdb

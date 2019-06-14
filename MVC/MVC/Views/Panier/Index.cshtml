@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DataBase.DetailsCommande>
+
+@{
+    ViewBag.Title = "Index";
+    double Liver = 0;
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Commande.StateDeCommande)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Produit.NomProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantite)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produit.NomProduit)
+            </td>
+            <td>
+                @(item.Produit.PrixProduit * item.Quantite)
+            </td>
+            <td>
+                @Ajax.ActionLink("+", "Incrementer", "Panier", new { IdProduit = item.IdProduit }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "span_" + item.IdProduit, InsertionMode = InsertionMode.Replace }, null)
+                <span id="span_@item.IdProduit">@Html.DisplayFor(modelItem => item.Quantite)</span>
+                @Ajax.ActionLink("-", "Decrementer", "Panier", new { IdProduit = item.IdProduit }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "span_" + item.IdProduit, InsertionMode = InsertionMode.Replace }, null)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdDetailsCommandes })
+            </td>
+        </tr>
+@*@Liver.= Liver + (double)(item.Produit.PoidsProduit * item.Quantite);*@
+    }
+
+</table>
+@{
+    decimal LiverPrixTotal = ((int)(Liver / 1.5) + 1) * 3;
+}
+<span class="btn btn-default center-block">
+    Prix  de Livrestion : @LiverPrixTotal
+</span>
+<span class="btn btn-info pull-left">
+    @Html.ActionLink("Back to list", "Index", "Home")
+</span>
+<span class="btn btn-warning pull-right">
+    @Html.ActionLink("Passer la Commande", "Valide")
+</span>

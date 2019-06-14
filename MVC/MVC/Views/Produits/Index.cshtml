@@ -1,0 +1,116 @@
+﻿@model IEnumerable<DataBase.Produit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdFournisseur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PoidsProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrlImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LargeurProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LongueurProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HauteurProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CapaciteProduit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Couleur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionProduit)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdFournisseur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrixProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PoidsProduit)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.UrlImage)" width="100px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LargeurProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LongueurProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HauteurProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CapaciteProduit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Couleur)
+            </td>
+            <td>
+                <button>Details</button>
+                <p id="description" style="display:none">@Html.DisplayFor(modelItem => item.DescriptionProduit)</p>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdProduit }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdProduit }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdProduit })
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts{
+<script>
+    $("button").click(() => {
+        $("#description").fadeToggle("slow", "linear");
+    });
+</script>  
+}
