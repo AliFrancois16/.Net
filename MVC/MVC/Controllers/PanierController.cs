@@ -26,7 +26,7 @@ namespace MVC.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-        
+
         public ActionResult AjouterAuPanier(int Id)
         {
             if (Session["panier"] == null)
@@ -66,7 +66,7 @@ namespace MVC.Controllers
         {
             Panier = (Commande)Session["panier"];
             DetailsCommande detail = Panier.DetailsCommandes.Where(d => d.IdProduit == IdProduit).First();
-            if(detail.Quantite == 1)
+            if (detail.Quantite == 1)
             {
                 return new ContentResult() { Content = detail.Quantite.ToString() };
             }
@@ -126,10 +126,27 @@ namespace MVC.Controllers
         }
         public ActionResult Valide()
         {
+
             IRepository<Commande> rep = new EFRepository<Commande>();
             Commande c = (Commande)Session["panier"];
-            rep.Ajouter(c);
-            return RedirectToAction("Index", "Home");
+            try
+            {
+                foreach (DetailsCommande item in c.DetailsCommandes)
+                {
+                    item.Produit = null;
+                }
+                rep.Ajouter(c);
+                Session["panier"] = null;
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception)
+            {
+
+                return View();
+            }
+
+
+
         }
         // GET: Panier/Delete/5
         public ActionResult Delete(int id)

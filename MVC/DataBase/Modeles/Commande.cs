@@ -17,7 +17,7 @@ namespace DataBase
         [Key]
         public int IdCommande { get; set; }
 
-        public int? IdClient { get; set; }
+        public int IdClient { get; set; }
 
         public DateTime? DateCommande { get; set; }
 
@@ -26,6 +26,7 @@ namespace DataBase
         [StringLength(30)]
         public string StateDeCommande { get; set; }
 
+        [ForeignKey("IdClient")]
         public virtual Client Client { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

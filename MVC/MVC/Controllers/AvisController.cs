@@ -50,7 +50,7 @@ namespace MVC.Controllers
             }
             ViewBag.IdClient = new SelectList(repC.Lister().Select(c=> new { c.IdClient, c.NomClient }), "IdClient", "NomClient");
             ViewBag.IdProduit = new SelectList(repP.Lister().Select(p=> new { p.IdProduit, p.NomProduit }), "IdProduit", "NomProduit");
-            ViewBag.Id = id;
+            Session["idProduit"] = id;
             return View();
         }
 
@@ -66,6 +66,7 @@ namespace MVC.Controllers
                 avi.DateAvis = DateTime.Now;
                 avi.IsPublie = false;
                 avi.IdClient = int.Parse(Session["id"].ToString());
+                avi.IdProduit = Convert.ToInt16(Session["idProduit"]);
                 rep.Ajouter(avi);
                 return RedirectToAction("Index", "Home");
             }

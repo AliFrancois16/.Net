@@ -3,15 +3,13 @@
 @{
     ViewBag.Title = "Index";
     double Liver = 0;
+    decimal PrixTotal = 0;
 }
-
 <h2>Index</h2>
 
 <table class="table">
     <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Commande.StateDeCommande)
-            </th>*@
+
         <th>
             @Html.DisplayNameFor(model => model.Produit.NomProduit)
         </th>
@@ -34,27 +32,50 @@
                 @(item.Produit.PrixProduit * item.Quantite)
             </td>
             <td>
-                @Ajax.ActionLink("+", "Incrementer", "Panier", new { IdProduit = item.IdProduit }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "span_" + item.IdProduit, InsertionMode = InsertionMode.Replace }, null)
+                @Ajax.ActionLink("+", "Incrementer", "Panier", new { IdProduit = item.IdProduit }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "span_" + @item.IdProduit , InsertionMode = InsertionMode.Replace }, null)
                 <span id="span_@item.IdProduit">@Html.DisplayFor(modelItem => item.Quantite)</span>
-                @Ajax.ActionLink("-", "Decrementer", "Panier", new { IdProduit = item.IdProduit }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "span_" + item.IdProduit, InsertionMode = InsertionMode.Replace }, null)
+                @Ajax.ActionLink("-", "Decrementer", "Panier", new { IdProduit = item.IdProduit }, new AjaxOptions { HttpMethod = "Get", UpdateTargetId = "span_" + @item.IdProduit, InsertionMode = InsertionMode.Replace }, null)
             </td>
             <td>
                 @Html.ActionLink("Delete", "Delete", new { id = item.IdDetailsCommandes })
             </td>
         </tr>
-@*@Liver.= Liver + (double)(item.Produit.PoidsProduit * item.Quantite);*@
+        PrixTotal += (decimal)(item.Produit.PrixProduit * item.Quantite);
+        Liver += (double)(item.Produit.PoidsProduit * item.Quantite);
     }
 
 </table>
+<span class="btn btn-default center-block" id="Calcule">
+    Calcule la Livrision
+</span>
 @{
     decimal LiverPrixTotal = ((int)(Liver / 1.5) + 1) * 3;
 }
-<span class="btn btn-default center-block">
-    Prix  de Livrestion : @LiverPrixTotal
-</span>
+<div id="Prix" style="display:none">
+    <span class="btn btn-default center-block" id="PrixLivrision">
+
+    </span>
+    <br />
+    <span class="btn btn-danger center-block" id="PrixTot">
+
+    </span>
+</div>
+
+
 <span class="btn btn-info pull-left">
     @Html.ActionLink("Back to list", "Index", "Home")
 </span>
 <span class="btn btn-warning pull-right">
     @Html.ActionLink("Passer la Commande", "Valide")
 </span>
+
+@section scripts{
+    <script>
+        $("#Calcule").click(()=>{
+            $("#PrixLivrision").text("Prix  de Livrestion : @LiverPrixTotal");
+            $("#PrixTot").text("Prix  de Livrestion : @(LiverPrixTotal + PrixTotal)");
+            $("#Prix").fadeToggle("slow", "linear");
+        });
+    </script>
+
+}

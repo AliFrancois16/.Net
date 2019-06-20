@@ -18,7 +18,7 @@ namespace DataBase
         [Key]
         public int IdProduit { get; set; }
 
-        public int? IdFournisseur { get; set; }
+        public int IdFournisseur { get; set; }
 
         [StringLength(50)]
         public string NomProduit { get; set; }
@@ -54,6 +54,7 @@ namespace DataBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailsCommande> DetailsCommandes { get; set; }
 
+        [ForeignKey("IdFournisseur")]
         public virtual Fournisseur Fournisseur { get; set; }
     }
 }

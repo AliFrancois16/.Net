@@ -11,9 +11,9 @@ namespace DataBase
         [Key]
         public int IdAvis { get; set; }
 
-        public int? IdClient { get; set; }
+        public int IdClient { get; set; }
 
-        public int? IdProduit { get; set; }
+        public int IdProduit { get; set; }
 
         [StringLength(255)]
         public string TexteAvis { get; set; }
@@ -24,8 +24,10 @@ namespace DataBase
 
         public bool? IsPublie { get; set; }
 
+        [ForeignKey("IdClient")]
         public virtual Client Client { get; set; }
 
+        [ForeignKey("IdProduit")]
         public virtual Produit Produit { get; set; }
     }
 }
